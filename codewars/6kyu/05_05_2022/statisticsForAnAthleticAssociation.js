@@ -104,5 +104,3 @@ function stat(strg) {
   const run = new Run(strg)
   return run.result()
 }
-
-console.log(stat(""))
