@@ -5,14 +5,10 @@
 // --we sort by highest frequency to lowest frequency. 
 // If two elements have same frequency, we sort by increasing value
 
-const solve = (arr) => [...arr].sort((a, b) => {
-  let countA = 0;
-  let countB = 0;
+const solve = arr => {
+  const storage = {};
   for (let el of arr) {
-    if (el === a) countA++;
-    else if (el === b) countB++;
-  };
-  return countA === countB ? a - b : countB - countA;
-});
-
-console.log(solve([2,3,5,3,7,9,5,3,7]))
+    storage[el] = storage[el] + 1 || 1;
+  }
+  return [...arr].sort((a, b) => storage[b] - storage[a] || a - b);
+}
