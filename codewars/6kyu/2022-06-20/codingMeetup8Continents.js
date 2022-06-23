@@ -17,6 +17,7 @@
 
 function allContinents(list) {
   const continents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
-  const devCont = list.map(dev => dev.continent);
-  return continents.every(continent => devCont.includes(continent));
+  return continents.every(continent => {
+    return list.some(dev => dev.continent === continent);
+  });
 }
