@@ -22,21 +22,12 @@
 // It can be assumed that version strings are non empty and only contain numeric literals and the character '.'.
 
 function compareVersions (version1, version2) {
-  const versionArr1 = version1.split('.');
-  const versionArr2 = version2.split('.');
-  const largerArrLength = Math.max(versionArr1.length, versionArr2.length)
-  console.log(versionArr1, versionArr2)
-  for (let i = 0; i < largerArrLength; i++) {
-    console.log( !versionArr2[i])
-    if (!versionArr1[i]) return false;
-    if (!versionArr2[i]) return true;
-    if (+versionArr1[i] > +versionArr2[i]) return true;
-    else if (i === largerArrLength - 1) {
-      if (+versionArr1[i] === +versionArr2[i]) return true;
-      if (+versionArr1[i] < +versionArr2[i]) return false;
-    }
+  const arr1 = version1.split('.');
+  const arr2 = version2.split('.');
+  const largerLength = Math.max(arr1.length, arr2.length)
+  for (let i = 0; i < largerLength; i++) {
+    if (+arr1[i] > +arr2[i] || !arr2[i]) return true;
+    if (+arr1[i] < +arr2[i] || !arr1[i]) return false;
   }
-  return false;
+  return true;
 }
-
-console.log(compareVersions("10.4", "11"))
